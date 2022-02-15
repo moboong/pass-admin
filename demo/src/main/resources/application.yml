@@ -1,0 +1,27 @@
+#server:
+#  port: 8080
+#spring:
+#  datasource:
+#    url: jdbc:mariadb://localhost:3306/test_crud?useUnicode=true&characterEncoding=utf8&verifyServerCertificate=false&useSSL=false&serverTimezone=UTC
+#    driver-class-name: org.mariadb.jdbc.Driver
+#    username: root
+#    password: fnvl125!
+#mybatis:
+#  mapper-locations:
+#  - classpath*:mapper/*.xml
+server:
+  port: 8080
+spring:
+  datasource:
+    url: jdbc:mariadb://localhost:3306/pass?useUnicode=true&characterEncoding=utf8&verifyServerCertificate=false&useSSL=false&serverTimezone=UTC
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: root
+    password: fnvl125!
+    
+mybatis:
+  mapper-locations:
+  - classpath*:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+  type-aliases-package: com.example.demo.vo
+  

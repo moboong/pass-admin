@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTDMapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.PassAplyMasMapper">
+	
+	<!-- R은 Map으로 -->
+    <select id="PAMList" resultType="java.util.HashMap" parameterType="map">
+        SELECT * FROM PASS_APLY_MAS
+        WHERE 1 = 1
+        <if test="USER_ID != null and USER_ID != ''">
+        	AND USER_ID = #{USER_ID}
+        </if>
+        <if test="APLY_SEQ != null and APLY_SEQ != ''">
+        	AND APLY_SEQ = #{APLY_SEQ}
+        </if>
+        <if test="SYS_ID != null and SYS_ID != ''">
+        	AND SYS_ID = #{SYS_ID}
+        </if>
+        <if test="SEC_KEY != null and SEC_KEY != ''">
+        	AND SEC_KEY = #{SEC_KEY}
+        </if>
+        <if test="QR_DATA != null and QR_DATA != ''">
+        	AND QR_DATA = #{QR_DATA}
+        </if>
+        <if test="PIN != null and PIN != ''">
+        	AND PIN = #{PIN}
+        </if>
+        <if test="APLY_DTTM != null and APLY_DTTM != ''">
+        	AND APLY_DTTM = #{APLY_DTTM}
+        </if>
+        <if test="AUTH_YN != null and AUTH_YN != ''">
+        	AND AUTH_YN = #{AUTH_YN}
+        </if>
+        <if test="AUTH_DTTM != null and AUTH_DTTM != ''">
+        	AND AUTH_DTTM = #{AUTH_DTTM}
+        </if>
+        <if test="REG_DTTM != null and REG_DTTM != ''">
+        	AND REG_DTTM = #{REG_DTTM}
+        </if>
+        ORDER BY APLY_SEQ
+    </select>
+     
+    <select id="fetchPAMByAPLY_SEQ" resultType="java.util.HashMap" parameterType="map">
+        SELECT * FROM PASS_APLY_MAS
+        WHERE APLY_SEQ = #{aplySeq}
+    </select>
+
+
+	<!-- C, U, D는 VO로 -->
+    <insert id="insertPAM" parameterType="PassAplyMasVO">
+        INSERT INTO PASS_APLY_MAS(USER_ID, APLY_SEQ, SYS_ID, SEC_KEY, QR_DATA, PIN, AUTH_YN, AUTH_DTTM)
+        VALUES(#{userId}, #{aplySeq}, #{sysId}, #{secKey}, #{qrData}, #{pin}, #{authYn}, #{authDttm})
+    </insert>
+     
+    <update id="updatePAM" parameterType="PassAplyMasVO">
+        UPDATE PASS_APLY_MAS
+        SET SEC_KEY = #{secKey}, QR_DATA = #{qrData}, PIN = #{pin}, AUTH_YN = #{authYn} 
+        WHERE APLY_SEQ = #{aplySeq}
+    </update>
+     
+    <delete id="deletePAM" parameterType="int">
+        DELETE FROM PASS_APLY_MAS
+        WHERE APLY_SEQ = #{aplySeq}
+    </delete>
+  
+</mapper>

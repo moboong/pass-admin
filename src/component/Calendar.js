@@ -32,8 +32,7 @@ class CalendarComponent extends Component {
 	const ed = moment(this.state.endDate).format('yyyy-MM-DD HH:mm:ss');
 	window.localStorage.setItem("STARTDATE", sd);
 	window.localStorage.setItem("ENDDATE", ed);
-	console.log(sd);
-	console.log(ed);
+
 	console.log(window.localStorage.getItem("STARTDATE"));
 	console.log(window.localStorage.getItem("ENDDATE"));
   }

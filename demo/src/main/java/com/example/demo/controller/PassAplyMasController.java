@@ -41,7 +41,7 @@ public class PassAplyMasController {
     
     @PostMapping("/some")
     public List<Map<String, Object>> PAMListWithCondition(@RequestBody Map<String, Object> parameter){
-    	System.out.println("send from frontend" + parameter);
+    	System.out.println("Send from frontend" + parameter);
     	List<Map<String, Object>> list = PAMMapper.PAMList(parameter);
     	log.info("some records = {}", list);
         System.out.println("PAM condition 리스트 출력 성공");

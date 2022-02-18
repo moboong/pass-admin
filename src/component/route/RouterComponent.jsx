@@ -13,15 +13,15 @@ import SysMasListComponent from "../sysMas/SysMasListComponent";
 import AddSysMasComponent from "../sysMas/AddSysMasComponent";
 import EditSysMasComponent from "../sysMas/EditSysMasComponent";
 
-import CustomizedSelects from "./CustomizedSelects";
+import Calendar from '../Calendar.js'  
 
 const AppRouter = () => {
    return(
      <div>
        <BrowserRouter>
-           
-       <CustomizedSelects />
-           
+        
+        <Calendar />
+        
         <div style={style}>
           <Routes>
             <Route exact path="/" element={<UserListComponent/>} />

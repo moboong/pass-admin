@@ -7,6 +7,7 @@
     <select id="PAMList" resultType="java.util.HashMap" parameterType="map">
         SELECT * FROM PASS_APLY_MAS
         WHERE 1 = 1
+        AND REG_DTTM >= #{startDate}
         <if test="USER_ID != null and USER_ID != ''">
         	AND USER_ID = #{USER_ID}
         </if>
@@ -34,9 +35,14 @@
         <if test="AUTH_DTTM != null and AUTH_DTTM != ''">
         	AND AUTH_DTTM = #{AUTH_DTTM}
         </if>
-        <if test="REG_DTTM != null and REG_DTTM != ''">
-        	AND REG_DTTM = #{REG_DTTM}
+        <if test="startDate != null and startDate != ''">
+        	AND REG_DTTM >= #{startDate}
         </if>
+        <if test="endDate != null and endDate != ''">
+        	AND REG_DTTM &lt;= #{endDate}
+        </if>
+
+        
         ORDER BY APLY_SEQ
     </select>
      

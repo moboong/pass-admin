@@ -13,6 +13,8 @@ import Typography from '@material-ui/core/Typography'
 import CreateIcon from '@material-ui/icons/Create'
 import DeleteIcon from '@material-ui/icons/Delete'
 
+import moment from 'moment';
+
 class PassAplyMasListComponent extends Component {
 
 	constructor(props) {
@@ -43,8 +45,8 @@ class PassAplyMasListComponent extends Component {
 	reloadSomePAMList = () => {
 
 		let parameter = {
-			startDate: window.localStorage.getItem("STARTDATE"),
-			endDate: window.localStorage.getItem("ENDDATE")
+			startDate: moment(this.props.data.startDate).format('yyyy-MM-DD HH:mm:ss'),
+			endDate: moment(this.props.data.endDate).format('yyyy-MM-DD HH:mm:ss')
 		}
 
 		ApiService.fetchSomePAMs(parameter)
@@ -88,6 +90,9 @@ class PassAplyMasListComponent extends Component {
 
 		return (
 			<div>
+					<div> Start Date : {moment(this.props.data.startDate).format('yyyy-MM-DD HH:mm:ss')}</div>
+        			<br/>
+       	 			<div> End Date : {moment(this.props.data.endDate).format('yyyy-MM-DD HH:mm:ss')}</div>
 				<Typography variant="h4" style={style}>PAM List</Typography>
 				<Button variant="contained" color="primary" onClick={this.addPAM}> PAM 추가하기 </Button>&nbsp;
 				<Button variant="contained" color="primary" onClick={this.reloadPAMList}> 전체출력 </Button>&nbsp;

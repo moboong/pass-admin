@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
+import IndexComponent from "../IndexComponent";
+
 import UserListComponent from "../user/UserListComponent";
 import AddUserComponent from "../user/AddUserComponent";
 import EditUserComponent from "../user/EditUserComponent";
@@ -48,7 +50,7 @@ class AppRouter extends Component {
 
 					<div style={style}>
 						<Routes>
-							<Route exact path="/" element={<UserListComponent />} />
+							<Route exact path="/" element={<IndexComponent />} />
 
 							<Route path="/users" element={<UserListComponent />} />
 							<Route path="/add-user" element={<AddUserComponent />} />

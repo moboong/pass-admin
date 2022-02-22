@@ -5,7 +5,6 @@ import {withRouter} from '../withRouter';
 
 class CalendarComponent extends Component {
   
-  
   render(){
     return (
       <div>
